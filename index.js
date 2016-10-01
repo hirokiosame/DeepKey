@@ -62,6 +62,11 @@ class JSONFile {
 		if (!this.hasChanged()) { return; }
 
 		fs.writeFileSync(this.filePath, JSON.stringify(this.data, null, this.indentation));
+
+		// Update cache
+		this.original = JSON.stringify(this.data);
+
+		return true;
 	}
 
 
